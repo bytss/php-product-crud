@@ -1,0 +1,20 @@
+/* 
+website styles
+*/
+
+table {
+  border: 1px solid black;
+}
+
+table td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+section.forms {
+  padding-top: 12px;
+}
+
+div.buttons {
+  margin-top: 5px;
+}
