@@ -52,9 +52,9 @@ include('./conn.php');
     <section class="forms">
         <form action="payment.php" method="POST">
             <label for="id">Enter ID:</label>
-            <input type="text" name="id" id="id">
+            <input type="text" name="id" id="id" required>
             <label for="qty">Enter Qty:</label>
-            <input type="number" name="qty" id="qty">
+            <input type="number" name="qty" id="qty" required>
             <div class="buttons">
                 <input type="submit" name="submit" value="TAKE ORDER">
                 <input type="reset" value="CLEAR">
