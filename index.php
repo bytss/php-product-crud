@@ -1,5 +1,6 @@
 <?php
-include('./conn.php');
+include('./db_connect.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +30,12 @@ include('./conn.php');
                 <?php
                 // execute sql command 
                 $sql = "SELECT * FROM `product_list`";
-                $result = $conn->query($sql);
+                $result = mysqli_query($conn, $sql);
 
                 // check results 
-                if ($result->num_rows > 0) {
+                if (mysqli_num_rows($result) > 0) {
                     // fetch result with associative array
-                    while ($row = $result->fetch_assoc()) {
+                    while ($row = mysqli_fetch_assoc($result)) {
                         echo '<tr>';
                         echo '<td>' . $row['id'] . '</td>';
                         echo '<td>' . $row['description'] . '</td>';
@@ -64,3 +65,8 @@ include('./conn.php');
 </body>
 
 </html>
+
+<?php
+// close connection
+mysqli_close($conn);
+?>

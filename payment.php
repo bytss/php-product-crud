@@ -1,6 +1,6 @@
 <?php
 // database connection
-include('conn.php');
+include('./db_connect.php');
 
 // check if the submit button is set
 if (isset($_POST['submit'])) {
@@ -9,10 +9,11 @@ if (isset($_POST['submit'])) {
 
     /* query the sql where the inserted id by the user is existed on the database */
     $sql = "SELECT * FROM `product_list` WHERE id='$id' LIMIT 1";
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, $sql);
 } else {
     header('Location: ./index.php');
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -41,9 +42,9 @@ if (isset($_POST['submit'])) {
             <tbody>
                 <?php
                 // check if the id is exist on the product_list table
-                if ($result->num_rows > 0) {
+                if (mysqli_num_rows($result) > 0) {
                     // sql results
-                    $row = $result->fetch_assoc();
+                    $row = mysqli_fetch_assoc($result);
                     $product_description = $row['description'];
                     $product_brand = $row['brand'];
                     $product_price = $row['price'];
@@ -83,3 +84,8 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
+
+<?php
+// close connection
+mysqli_close($conn);
+?>
